@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -24,7 +23,7 @@ public class PetCategoryController {
     @Autowired
     private PetCategoryMapper PetCategoryMapper;
 
-    // GET: All Categories
+
     @GetMapping
     public ResponseEntity<?> getAllCategories() {
         List<PetCategory> categories = repository.findAll();
@@ -35,7 +34,7 @@ public class PetCategoryController {
         return ResponseEntity.ok(dtos);
     }
 
-    // GET: Category by ID
+
     @GetMapping("/{category_id}")
     public ResponseEntity<?> getCategoryById(@PathVariable Integer category_id) {
         Optional<PetCategory> optional = repository.findById(category_id);
@@ -51,7 +50,8 @@ public class PetCategoryController {
         }
     }
 
-    // GET: Category by Name
+
+
     @GetMapping("/name/{category_name}")
     public ResponseEntity<?> getCategoryByName(@PathVariable String category_name) {
         Optional<PetCategory> optional = repository.findByName(category_name);
@@ -67,7 +67,7 @@ public class PetCategoryController {
         }
     }
 
-    // POST: Add Category
+
     @PostMapping("/add")
     public ResponseEntity<?> addCategory(@Valid @RequestBody PetCategoryDto dto, BindingResult result) {
         if (result.hasErrors()) {
@@ -86,7 +86,8 @@ public class PetCategoryController {
         ));
     }
 
-    // PUT: Update Category
+
+
     @PutMapping("/update/{category_id}")
     public ResponseEntity<?> updateCategory(@PathVariable Integer category_id, @Valid @RequestBody PetCategoryDto dto, BindingResult result) {
         if (result.hasErrors()) {
