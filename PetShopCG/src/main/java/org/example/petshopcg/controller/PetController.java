@@ -3,7 +3,7 @@ package org.example.petshopcg.controller;
 import jakarta.validation.Valid;
 import org.example.petshopcg.dto.*;
 import org.example.petshopcg.entity.Pet;
-import org.example.petshopcg.entity.Supplier;
+
 import org.example.petshopcg.mapper.*;
 import org.example.petshopcg.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,19 +121,6 @@ public class PetController {
         }
     }
 
-
-    @GetMapping("/pets/grooming-service/{serviceName}")
-    public ResponseEntity<?> getPetsByGroomingService(@PathVariable String serviceName) {
-        try {
-            List<PetGroomingView> result = groomingServiceRepository.findPetsByGroomingServiceName(serviceName);
-            return ResponseEntity.ok(result);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of(
-                    "timestamp", LocalDate.now(),
-                    "message", "Failed to fetch pets by grooming service"
-            ));
-        }
-    }
 
 
 
