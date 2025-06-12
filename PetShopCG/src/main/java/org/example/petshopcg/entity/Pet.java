@@ -46,12 +46,6 @@ public class Pet {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @ManyToMany
-    @JoinTable(
-            name = "pet_grooming_service",
-            joinColumns = @JoinColumn(name = "pet_id"),
-            inverseJoinColumns = @JoinColumn(name = "grooming_service_id")
-    )
-    private Set<GroomingService> groomingServices = new HashSet<>();
+
 
 }
